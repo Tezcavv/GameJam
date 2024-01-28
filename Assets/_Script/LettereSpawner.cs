@@ -76,7 +76,7 @@ public class LettereSpawner : MonoBehaviour
 
                 Lettera letter = (Instantiate(lettera, lettereHolder.transform)).GetComponent<Lettera>();
                 letter.timeRemaining = spawnInterval-i;
-                letter.key = keys[Random.Range(0, Mathf.Min(keys.Length , DifficultyManager.Instance.Level/2))];
+                letter.key = keys[Random.Range(0, Mathf.Min(keys.Length , DifficultyManager.Instance.Level+1))];
                 currentlyActiveLetters.Add(letter);
 
             }

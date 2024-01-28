@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     GameObject currentSpawnPoint;
     
 
-    private void Awake() {
+    private void Start() {
 
-        SetToColumn((spawnerDiOstacoli.SpawnPoints.Count / 2)-1);
+        SetToColumn(0);
         
 
     }

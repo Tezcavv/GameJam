@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
    public UnityEvent OnPlayerMistake;
    public void GetDamaged() {
         print("MISTAKE");
+        DifficultyManager.Instance.Level /= 2;
         OnPlayerMistake.Invoke();
     }
 
