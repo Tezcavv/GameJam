@@ -70,12 +70,21 @@ public class LettereSpawner : MonoBehaviour
 
     private IEnumerator SpawnLetter() {
         while (canSpawn) {
+
             yield return new WaitForSeconds(spawnInterval);
+
+            if (currentlyActiveLetters.Count > 0) {
+                currentlyActiveLetters.ForEach(letter => Destroy(letter.gameObject));
+                currentlyActiveLetters.Clear();
+                player.GetDamaged();
+                continue;
+            }
+
             int random = Random.Range(Mathf.Min(3,DifficultyManager.Instance.Level+1), Mathf.Min(5, DifficultyManager.Instance.Level));
             for (int i = 0; i < random ; i++) {
 
                 Lettera letter = (Instantiate(lettera, lettereHolder.transform)).GetComponent<Lettera>();
-                letter.timeRemaining = spawnInterval-i;
+                letter.timeRemaining = spawnInterval;
                 letter.key = keys[Random.Range(0, Mathf.Min(keys.Length , DifficultyManager.Instance.Level+1))];
                 currentlyActiveLetters.Add(letter);
 

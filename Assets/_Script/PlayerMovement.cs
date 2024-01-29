@@ -16,9 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() {
 
-        SetToColumn(0);
+        StartCoroutine(WaitABit());
         
 
+    }
+
+    IEnumerator WaitABit() {
+        yield return null;
+        SetToColumn(0);
     }
 
     public void Move(CallbackContext ctx) {
